@@ -23,8 +23,6 @@
     <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/themify.css') ?>">
     <!-- Flag icon-->
     <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/flag-icon.css') ?>">
-    <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/feather-icon.css') ?>">
     <?= $css ?>
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="<?= site_url('assets/css/bootstrap.css') ?>">

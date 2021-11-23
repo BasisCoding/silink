@@ -57,9 +57,9 @@
               <h4>Login</h4>
               <h6>Welcome back! Log in to your account.</h6>
               <div class="form-group">
-                <label>Email Address</label>
+                <label>Email or Username</label>
                 <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                  <input class="form-control" name="email" type="email" required="" placeholder="Test@gmail.com">
+                  <input class="form-control" name="email_username" type="text" required="" placeholder="Email atau Username">
                 </div>
               </div>
               <div class="form-group">
@@ -73,7 +73,7 @@
               </div>
               <div class="form-group">
                 <div class="checkbox">
-                  <input id="checkbox1" type="checkbox" name="remenber_me">
+                  <input id="checkbox1" type="checkbox" name="remember_me">
                   <label class="text-muted" for="checkbox1">Remember password</label>
                 </div><a class="link" href="forget-password.html">Forgot password?</a>
               </div>

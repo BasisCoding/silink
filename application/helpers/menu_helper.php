@@ -13,15 +13,15 @@ if (!function_exists('menu_helper')) {
 				
 				$anchor = '<li class="dropdown">
 								<a class="nav-link menu-title " href="javascript:void(0)">
-									<i data-feather="'.$menu->icon.'"></i>
-									<span>'.$menu->nama_menu.'</span>
+									<i data-feather="'.$menu->menu_icon.'"></i>
+									<span>'.$menu->menu_name.'</span>
 								</a>';
 
 			}else{
 				$anchor = '<li>
-								<a class="nav-link menu-title link-nav " href="'.base_url($menu->link).'">
-									<i data-feather="'.$menu->icon.'"></i>
-									<span>'.$menu->nama_menu.'</span>
+								<a class="nav-link menu-title link-nav " href="'.base_url($menu->menu_link).'">
+									<i data-feather="'.$menu->menu_icon.'"></i>
+									<span>'.$menu->menu_name.'</span>
 								</a>';
 			}
 
@@ -46,7 +46,7 @@ if (!function_exists('menu_helper')) {
 
 		foreach($sub_menu as $menu){
 			
-			$anchor = '<li><a href="'.$menu->link.'">'.$menu->nama_menu.'</a></li>';
+			$anchor = '<li><a href="'.$menu->menu_link.'">'.$menu->menu_name.'</a></li>';
 			$sub .= $anchor;
 		}
 		return $sub;

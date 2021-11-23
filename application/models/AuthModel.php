@@ -4,12 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AuthModel extends CI_Model {
 	
-	function login($email)
+	function login($email_username)
 	{
-		$this->db->select('u.id, u.nama_lengkap, u.email, u.password, u.foto, u.username, u.cookie, u.status, r.id_roles, r.name_role, r.name_slug');
+		$this->db->select('u.id, u.nama_lengkap, u.email, u.password, u.foto, u.username, u.cookie, u.status, g.id as group_id, g.name as group_name, g.description as group_desc');
 		$this->db->from('users as u');
-		$this->db->join('roles as r', 'r.id_roles = u.role_id', 'left');
-		$this->db->where('u.email', $email);
+		$this->db->join('groups as g', 'g.id = u.group_id', 'left');
+		$this->db->where('u.email', $email_username);
+		$this->db->or_where('u.username', $email_username);
 		return $this->db->get();
 	}	
 
@@ -17,6 +18,20 @@ class AuthModel extends CI_Model {
 	{
 		return $this->db->insert('users', $data);
 	}
+
+	function update($data, $id)
+	{
+		return $this->db->update('users', $data, array('id' => $id));
+	}
+
+	function get_by_cookie($cookie)
+    {
+		$this->db->select('u.id, u.nama_lengkap, u.email, u.password, u.foto, u.username, u.cookie, u.status, g.id as group_id, g.name as group_name, g.description as group_desc');
+		$this->db->from('users as u');
+		$this->db->join('groups as g', 'g.id = u.group_id', 'left');
+        $this->db->where('cookie', $cookie);
+        return $this->db->get();
+    }
 	
 }
 

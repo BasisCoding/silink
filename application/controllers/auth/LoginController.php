@@ -7,16 +7,17 @@ class LoginController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('AuthModel');
+		$this->load->helper('String');
 	}
 	
 	public function index()
 	{
 		$dev['pagejs'] = 'login.js';
 
-		$cookie = get_cookie('silink');
+		$cookie = get_cookie('ppdb');
 		if ($this->session->userdata('logged')) {
 			redirect('dashboard','refresh');
-		}else if ($cookie <> '') {
+		}else if ($cookie != '') {
 			$row = $this->AuthModel->get_by_cookie($cookie)->row();
 			if ($row) {
 				$this->_reg_session($row);
@@ -32,11 +33,11 @@ class LoginController extends CI_Controller {
 
 	public function proses()
 	{
-		$email 		= $this->input->post('email');
+		$email_username		= $this->input->post('email_username');
 		$password 	= $this->input->post('password');
 		$remember 	= $this->input->post('remember_me');
 
-		$row = $this->AuthModel->login($email)->row();
+		$row = $this->AuthModel->login($email_username)->row();
 
 		if ($row) {
 			if ($row->status == 1) {
@@ -44,7 +45,8 @@ class LoginController extends CI_Controller {
 					
 					if ($remember) {
 						$key = random_string('alnum', 64);
-						setcookie('silink', $key, strtotime('+30 days'));
+
+						set_cookie('ppdb', $key, 60 * 5);
 						$update = array('cookie' => $key);
 
 						$this->AuthModel->update($update, $row->id);
@@ -89,9 +91,9 @@ class LoginController extends CI_Controller {
 			'email'				=> $row->email,
 			'nama_lengkap'		=> $row->nama_lengkap,
 			'foto'				=> $row->foto,
-			'id_role'			=> $row->id_roles,
-			'name_role'			=> $row->name_role,
-			'name_slug'			=> $row->name_slug,
+			'group_id'			=> $row->group_id,
+			'group_name'		=> $row->group_name,
+			'group_desc'		=> $row->group_desc,
 			'logged' 			=> TRUE
 		);
 
@@ -109,7 +111,7 @@ class LoginController extends CI_Controller {
 
 	public function logout()
 	{
-		delete_cookie('siorma');
+		delete_cookie('ppdb');
 		$this->session->sess_destroy();
 		redirect('login','refresh');
 	}

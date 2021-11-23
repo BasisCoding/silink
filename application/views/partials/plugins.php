@@ -10,11 +10,4 @@
 <!-- Bootstrap js-->
 <script src="<?= site_url('assets/js/bootstrap/popper.min.js') ?>"></script>
 <script src="<?= site_url('assets/js/bootstrap/bootstrap.min.js') ?>"></script>
-<?= $js ?>
-<!-- Theme js-->
-<script src="<?= site_url('assets/js/script.js') ?>"></script>
-<script src="<?= site_url('assets/js/theme-customizer/customizer.js') ?>"></script>
-<!-- login js-->
-<!-- Plugin used-->
-</body>
-</html>
+<script src="<?= site_url('assets/js/notify/bootstrap-notify.min.js') ?>"></script>

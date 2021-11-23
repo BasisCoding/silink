@@ -61,3 +61,5 @@ $route['login'] = 'auth/LoginController';
 
 $route['register'] = 'auth/RegisterController';
 	$route['registerproses'] = 'auth/RegisterController/proses';
+
+$route['dashboard'] = 'Dashboard';
