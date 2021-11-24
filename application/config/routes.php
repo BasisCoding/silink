@@ -63,3 +63,4 @@ $route['register'] = 'auth/RegisterController';
 	$route['registerproses'] = 'auth/RegisterController/proses';
 
 $route['dashboard'] = 'Dashboard';
+$route['data-warga'] = 'DataWarga';
